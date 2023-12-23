@@ -28,15 +28,32 @@ const KEYS = [
     "z",
 ]
 
+type keyboardprops = {
+    getKey : ((key:string) => void)
+    incorrectLetters : string[]
+    correctLetters : string[]
+    disabled : boolean
+}
 
-const Keybord = () => {
+const Keybord = ({getKey , incorrectLetters , correctLetters , disabled}:keyboardprops) => {
 return (
     <div className="keybord-container">
-        {KEYS.map((key , index) => (
-            <button className="keybord-btn " key={index}>{key}</button>
-        ))}
+        {KEYS.map((key , index) => {
+            const isActive = correctLetters.includes(key)
+            const isInactive = incorrectLetters.includes(key)
+            return (
+                <button onClick={()=>getKey(key)} 
+                className={`${"keybord-btn"} ${isActive && "active"} ${isInactive && "inactive"}`} 
+                key={index}
+                disabled = {isActive || isInactive || disabled }
+                >
+                {key}
+                </button>
+            )
+        })}
     </div>
 )
+
 }
 
 export default Keybord

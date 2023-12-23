@@ -12,6 +12,13 @@
   align-items: center;
   gap: 30px;
 }
+.section-header {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  margin-top: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
 .section-content {
   display: flex;
   flex-direction: column;
@@ -132,14 +139,18 @@
   cursor: pointer;
 }
 
-.keybord-btn:hover,
-.keybord-btn:focus {
+.keybord-btn:hover:not(:disabled),
+.keybord-btn:focus:not(:disabled) {
   background-color: aquamarine;
 }
 
 .keybord-btn.active {
   background-color: aqua;
+  color: #fff;
 }
 .keybord-btn.inactive {
   opacity: 0.3;
+}
+.color-red {
+  color: red;
 }
